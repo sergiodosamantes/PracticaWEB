@@ -23,18 +23,21 @@ class ShoppingCart{
     }
 
     get products(){
-
+        return this._products;
     }
 
     set products(value){
         this.products = [];
+        //type string -> parse JSON
+        //array --> for and create
 
 
+        // if a single element -> create
         this.products.push(Product.createFromObject(value));
     }
 
     get productProxies(){
-
+        return this._productProxies;
     }
 
     set productProxies(value){
@@ -50,6 +53,25 @@ class ShoppingCart{
 
         //or create new
 
-        let newItem = new ProductProxy(productUid, amount)
+        let newItem = new ProductProxy(productUid, amount);
+        this.productProxies.push(newItem);
     }
+
+    updateItem(productUid, amount){
+        if (amount == 0) return;
+        if (amount < 0) throw new ShoppingCartException("Amount cannot be negative");
+
+        let item = this.productProxies.find(item => item.productUid == productUid);
+        if (!item) throw new ShoppingCartException("Item not found");
+
+        item.amount = amount;
+    }
+
+    removeItem(productUid){
+        let index = this.productProxies.findIndex(item => item.productUid == productUid);
+        if (index == -1) throw new ShoppingCartException("Item not found");
+
+        this.productProxies.splice(index, 1);
+    }
+
 }
