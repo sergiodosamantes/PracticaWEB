@@ -1,5 +1,7 @@
 "use strict";
 
+import { generateUUID } from "./utils.js";
+
 class ProductException {
     constructor(errorMessage) {
         this.errorMessage = errorMessage;
@@ -11,8 +13,10 @@ class ProductException {
 }
 
 class Product {
-    constructor(uuid, title, description, imageUrl, unit, stock, pricePerUnit, category) {
-        this.uuid = generateUUID;
+    // Eliminamos el parámetro uuid, se genera internamente.
+    constructor(title, description, imageUrl, unit, stock, pricePerUnit, category) {
+        // Genera el UUID automáticamente:
+        this._uuid = generateUUID();
         this.title = title;
         this.description = description;
         this.imageUrl = imageUrl;
@@ -27,10 +31,8 @@ class Product {
     }
 
     set uuid(value) {
-        if (!value || typeof value !== "string") {
-            throw new ProductException("Invalid UUID");
-        }
-        this._uuid = value;
+        // No se permite modificar el UUID desde fuera.
+        throw new ProductException("UUID is read-only");
     }
 
     get title() {
@@ -111,29 +113,35 @@ class Product {
     }
 
     static createFromJson(jsonValue) {
-        let obj = JSON.parse(jsonValue); 
-        return Product.createFromObject(obj);
+        try {
+            let obj = JSON.parse(jsonValue);
+            return Product.createFromObject(obj);
+        } catch (error) {
+            throw new ProductException("Invalid JSON format");
+        }
     }
 
     static createFromObject(obj) {
-        let newProduct = {}
-        Object.assign(newProduct,obj);
-        Product.cleanObject(newProduct);
-
-        let product = new Product(newProduct.title, newProduct.description, newProduct.imageUrl, newProduct.unit, newProduct.stock, newProduct.pricePerUnit, newProduct.category);
-        if (newProduct.uuid) {
-            product.uuid = newProduct.uuid;
-        }
-        return product
+        Product.cleanObject(obj);
+        return new Product(
+            obj.title,
+            obj.description,
+            obj.imageUrl,
+            obj.unit,
+            obj.stock,
+            obj.pricePerUnit,
+            obj.category
+        );
     }
 
     static cleanObject(obj) {
-        const allowedKeys = ["uuid", "title", "description", "imageUrl", "unit", "stock", "pricePerUnit", "category"];
-        for (let propo in obj){
-            if(!productProperties.includes(propo)){
-                delete obj[propo];
+        const allowedKeys = ["title", "description", "imageUrl", "unit", "stock", "pricePerUnit", "category"];
+        Object.keys(obj).forEach(key => {
+            if (!allowedKeys.includes(key)) {
+                delete obj[key];
             }
-        }
+        });
     }
-
 }
+
+export { Product, ProductException };
