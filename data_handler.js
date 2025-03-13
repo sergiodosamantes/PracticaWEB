@@ -2,19 +2,16 @@
 
 import { Product } from "./products.js";
 
-const products = [];
+let products = [];
 
-/**
- * Retorna el arreglo completo de productos.
- */
 function getProducts() {
     return products;
 }
 
 /**
  * Retorna el producto cuyo uuid coincide.
- * @param {string} uuid - Identificador único del producto.
- * @returns {Product|undefined} El producto encontrado o undefined si no existe.
+ * @param {string} uuid 
+ * @returns {Product|undefined} 
  */
 function getProductById(uuid) {
     return products.find(product => product.uuid === uuid);
@@ -23,9 +20,8 @@ function getProductById(uuid) {
 /**
  * Crea un nuevo producto a partir de un objeto y lo agrega a la lista.
  * Se utiliza Product.createFromObject para validar y construir la instancia.
- * @param {Object} product - Objeto con los datos del producto.
- * @returns {Product} La instancia creada del producto.
- */
+ * @param {Object} product 
+ * @returns {Product} */
 function createProduct(product) {
     const newProduct = Product.createFromObject(product);
     products.push(newProduct);
@@ -33,11 +29,11 @@ function createProduct(product) {
 }
 
 /**
- * Actualiza un producto existente identificado por su uuid.
- * Se limpia el objeto actualizado y se usan Object.assign para actualizar la instancia.
+ * Actualiza un producto existente por su uuid.
+ * Se limpia el objeto actualizado 
  * @param {string} uuid - Identificador único del producto a actualizar.
- * @param {Object} updatedProduct - Objeto con los campos a actualizar.
- * @returns {Product} La instancia actualizada del producto.
+ * @param {Object} updatedProduct -
+ * @returns {Product} 
  * @throws {Error} Si el producto no es encontrado.
  */
 function updateProduct(uuid, updatedProduct) {
@@ -45,16 +41,14 @@ function updateProduct(uuid, updatedProduct) {
     if (index === -1) {
         throw new Error("Product not found");
     }
-    // Limpiar el objeto de propiedades que no pertenecen a Product.
     Product.cleanObject(updatedProduct);
-    // Actualizamos las propiedades del producto existente.
     Object.assign(products[index], updatedProduct);
     return products[index];
 }
 
 /**
  * Elimina un producto de la lista según su uuid.
- * @param {string} uuid - Identificador único del producto a eliminar.
+ * @param {string} uuid 
  * @throws {Error} Si el producto no es encontrado.
  */
 function deleteProduct(uuid) {
@@ -67,12 +61,7 @@ function deleteProduct(uuid) {
 
 /**
  * Busca productos basándose en el query recibido.
- * El formato del query puede ser:
- *   - "<category>: <title>" para filtrar por ambos.
- *   - "<category>:" para filtrar por categoría únicamente.
- *   - "<title>" para filtrar por nombre únicamente.
- * La búsqueda es sensible a subcadenas, ignorando mayúsculas y minúsculas.
- * @param {string} query - Cadena de búsqueda.
+ * @param {string} query 
  * @returns {Array<Product>} Arreglo con los productos que cumplen los filtros.
  */
 function findProduct(query) {
@@ -88,7 +77,6 @@ function findProduct(query) {
         if (category === "") category = null;
         if (title === "") title = null;
     } else {
-        // Si no hay ":" se asume que el query es el título.
         title = query.trim();
         if (title === "") title = null;
     }

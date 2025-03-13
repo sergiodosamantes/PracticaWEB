@@ -8,4 +8,4 @@ function generateUUID() {
     });
 }
 
-export { generateUUID };
+export { generateUUID};

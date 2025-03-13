@@ -25,8 +25,8 @@ class ProductProxy {
 
 class ShoppingCart {
     constructor() {
-        this._products = [];       // Copia de los productos reales.
-        this._productProxies = []; // Lista de proxies (UUID + cantidad).
+        this._products = [];  // Copia de los productos reales.
+        this._productProxies = []; 
     }
 
     get products() {
@@ -34,7 +34,6 @@ class ShoppingCart {
     }
     
     set products(value) {
-        // Se asigna directamente la lista recibida.
         this._products = value;
     }
 

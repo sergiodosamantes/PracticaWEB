@@ -13,9 +13,7 @@ class ProductException {
 }
 
 class Product {
-    // Eliminamos el parámetro uuid, se genera internamente.
     constructor(title, description, imageUrl, unit, stock, pricePerUnit, category) {
-        // Genera el UUID automáticamente:
         this._uuid = generateUUID();
         this.title = title;
         this.description = description;
@@ -31,7 +29,6 @@ class Product {
     }
 
     set uuid(value) {
-        // No se permite modificar el UUID desde fuera.
         throw new ProductException("UUID is read-only");
     }
 
