@@ -1,4 +1,4 @@
-// js/ajax_handler.js
+
 import { initCart, addItemToCart } from '../Practica4/session_cart.js';
 export async function loadProducts(url) {
     let response = await fetch(url);
@@ -23,5 +23,5 @@ export async function loadProducts(url) {
 
 
 
-// Inicializar carrito al cargar la página
+// iniciar el carrito
 initCart();

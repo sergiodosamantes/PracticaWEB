@@ -116,17 +116,17 @@ function cancelAmount(event) {
 }
 
 function deleteItem(event) {
-    // Encuentra la fila y el índice del producto
+  
     const row = event.target.closest('tr');
     const input = row.querySelector('input[type="number"]');
     const index = parseInt(input.dataset.index, 10);
   
-    // Lee, modifica y guarda el carrito
+   
     const cart = getCart();
     cart.splice(index, 1);
     saveCart(cart);
   
-    // Recarga la página para re-renderizar
+
     location.reload();
 }
 

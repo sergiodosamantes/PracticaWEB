@@ -1,4 +1,4 @@
-// js/product_utils.js 
+
 "use strict";
 
 import { loadProducts } from "./ajax_handler.js";
@@ -32,9 +32,7 @@ export function productToHTML(product) {
   `;
 }
 
-/**
- * Renderiza una lista de productos
- */
+
 export function productListToHTML(productList) {
   productContainer.innerHTML = `
     <div class="row">
@@ -76,7 +74,7 @@ export function renderPagination() {
   
   container.innerHTML = '';
   
-  // Botón Anterior
+  
   const prevLi = document.createElement('li');
   prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
   prevLi.innerHTML = `
@@ -94,7 +92,7 @@ export function renderPagination() {
     });
   }
   
-  // Botones de páginas
+ 
   for (let p = 1; p <= totalPages; p++) {
     const li = document.createElement('li');
     li.className = `page-item ${p === currentPage ? 'active' : ''}`;
@@ -141,7 +139,7 @@ export function bindAddButtons() {
   });
 }
 
-// Inicialización: carga los productos y renderiza la primera página
+
 export function initProductsPage() {
   loadProducts(productsUrl)
     .then(products => {
