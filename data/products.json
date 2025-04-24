@@ -1,0 +1,22 @@
+[
+  {
+    "uuid": "e3131ebe-77fa-46b1-ae4e-3f58672f7df6",
+    "title": "Playera FC Barcelona Visitante Blanca",
+    "description": "Playera del equipo principal. Color blanco Barcelona, con estampado de la Liga.",
+    "imageUrl": "https://jerseyco.mx/cdn/shop/files/BarcelonaVisitante24.jpg?v=1692477243",
+    "unit": "pieza",
+    "stock": 10,
+    "pricePerUnit": 250,
+    "category": "Ropa"
+  },
+  {
+    "uuid": "4bf31e31-f3a2-4e5e-9f86-7931dd5ac9b7",
+    "title": "Playera FC Barcelona Local Last League",
+    "description": "Playera del equipo principal, de la temporada donde se ganó la última liga española con Xavi.",
+    "imageUrl": "https://down-mx.img.susercontent.com/file/6b00e75ac38df77f0ed36b0af04e3c26",
+    "unit": "pieza",
+    "stock": 8,
+    "pricePerUnit": 300,
+    "category": "Ropa"
+  }
+]

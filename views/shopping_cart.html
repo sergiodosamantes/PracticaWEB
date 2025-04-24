@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Shopping Cart</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" 
+    integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
+  <style>
+    .carousel-item img {
+      max-height: 300px;
+    }
+  </style>
+</head>
+<body>
+    <!-- nav bar, lo cambiamos a dark por el color -->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <a class="navbar-brand" href="home.html">DASW</a>
+
+
+      <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Encuentra los mejores productos del equipo">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      </form>
+
+      <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+<!-- botenes y relacionarlos con los id para que te pasen -->
+      <div class="collapse navbar-collapse" id="collapsibleNavId">
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">Mi cuenta</a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownId">
+                      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#loginModal">Ingresar</a>
+                      <a class="dropdown-item" href="#"data-toggle="modal" data-target="#registerModal">Registros</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="orders.html">Mis pedidos</a>
+                  </div>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="shopping_cart.html">
+                      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                  </a>
+              </li>
+          </ul>
+      </div>
+  </nav>  
+
+
+   <!-- INGRESAR -->
+   <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+   aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+
+    <!-- Encabezadol -->
+    <div class="modal-header">
+      <h5 class="modal-title" id="loginModalLabel">Ingresar</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <form>
+        <!-- correo -->
+        <div class="form-group">
+          <label for="emailInput">Correo</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="emailIcon">
+                <i class="fa fa-envelope"></i>
+              </span>
+            </div>
+            <input type="email"
+                   class="form-control"
+                   id="emailInput"
+                   placeholder="Ingresa tu correo"
+                   aria-describedby="emailIcon"
+                   required>
+          </div>
+        </div>
+
+        <!-- contraseña -->
+        <div class="form-group">
+          <label for="passwordInput">Password</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="passwordIcon">
+                <i class="fa fa-lock"></i>
+              </span>
+            </div>
+            <input type="password"
+                   class="form-control"
+                   id="passwordInput"
+                   placeholder="Ingresa tu contraseña"
+                   aria-describedby="passwordIcon"
+                   required>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-success" data-dismiss="modal">
+            Login
+          </button>
+        </div>
+        <div class="d-flex justify-content-end mt-2">
+          <!-- Enlace relacionado con registarse -->
+          <a href="#"
+             data-dismiss="modal"
+             data-toggle="modal"
+             data-target="#registerModal">
+            ¿No tienes cuenta? Regístrate aquí
+          </a>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- REGISTRO -->
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog"
+       aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="registerModalLabel">Registrar usuario</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <form>
+            <!-- row para poner el nombre y apellidos en la misma filaaaaaaa -->
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="firstNameInput">Nombre(s)</label>
+                  <input type="text"
+                         class="form-control"
+                         id="firstNameInput"
+                         placeholder="Nombre(s)"
+                         required>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="lastNameInput">Apellidos</label>
+                  <input type="text"
+                         class="form-control"
+                         id="lastNameInput"
+                         placeholder="Apellidos"
+                         required>
+                </div>
+              </div>
+            </div>
+
+            <!-- Correo -->
+            <div class="form-group">
+              <label for="emailRegisterInput">Tu correo</label>
+              <input type="email"
+                     class="form-control"
+                     id="emailRegisterInput"
+                     placeholder="Ingresa tu correo"
+                     required>
+            </div>
+            <div class="form-group">
+              <label for="passwordRegisterInput">Contraseña</label>
+              <input type="password"
+                     class="form-control"
+                     id="passwordRegisterInput"
+                     placeholder="Ingresa tu contraseña"
+                     required
+                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                     title="Debe tener al menos 6 caracteres, incluyendo mayúsculas, minúsculas y números">
+            </div>
+
+            <!--  contraseña 6 caracyeres o lo que pide -->
+            <div class="form-group">
+              <label for="passwordConfirmInput">Confirmar contraseña</label>
+              <input type="password"
+                     class="form-control"
+                     id="passwordConfirmInput"
+                     placeholder="Repite tu contraseña"
+                     required
+                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" 
+                     
+
+
+                     title="Debe tener al menos 6 caracteres, incluyendo mayúsculas, minúsculas y números">
+            </div>
+
+            <!-- Botón Registrarse -->
+            <button type="submit" class="btn btn-success btn-block">
+              Registrarse
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--  carrito -->
+  <div class="container my-5">
+    <h2 class="text-center mb-4">Resumen de Compra</h2>
+    <div class="row">
+      <div class="col-12 col-md-8">
+
+        <div class="media p-3 mb-3 border rounded shadow-sm">
+          <div class="media-body">
+            <h5 class="mt-0">Playera FC Barcelona Visitante Blanca</h5>
+            <p>Camiseta oficial. Cantidad: 1</p>
+          </div>
+
+
+
+          <div class="align-self-center text-right mr-3">
+            <p class="h6 mb-1">$99.99</p>
+            <button class="btn btn-danger btn-sm">Eliminar</button>
+          </div>
+          <div class="media-right align-self-center">
+            <img class="w-25" src="https://jerseyco.mx/cdn/shop/files/BarcelonaVisitante24.jpg?v=1692477243" 
+              alt="Playera FC Barcelona Visitante Blanca">
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <!-- Producto 2 -->
+        <div class="media p-3 mb-3 border rounded shadow-sm">
+          <div class="media-body">
+            <h5 class="mt-0">Playera FC Barcelona Local Last League</h5>
+            <p>Camiseta alternativa. Cantidad: 2</p>
+          </div>
+          <div class="align-self-center text-right mr-3">
+            <p class="h6 mb-1">$200 </p>
+            <button class="btn btn-danger btn-sm">Eliminar</button>
+          </div>
+          <div class="media-right align-self-center">
+            <img class="w-25" src="https://down-mx.img.susercontent.com/file/6b00e75ac38df77f0ed36b0af04e3c26" 
+              alt="Playera FC Barcelona">
+          </div>
+        </div>
+      </div>
+
+
+
+
+      
+      <div class="col-12 col-md-4">
+        <div class="card p-3">
+          <h4>Total</h4>
+          <p class="h5">$299.99</p>
+          <button class="btn btn-success btn-block mt-3">Proceder al Pago</button>
+          <!--relacion con el orders.html -->
+          <a href="orders.html" class="btn btn-info btn-block mt-3">Ver Orden</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+ 
+  
+
+  <!-- Bootstrap JS, Popper.js y jQuery -->
+  <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Al final de shopping_cart.html -->
+<script type="module">
+ import { getCart } from '../Practica4/session_cart.js';
+import {
+  shoppingCartToHtml,
+  priceSummaryToHtml,
+  enableAmount,
+  confirmAmount,
+  cancelAmount,
+  deleteItem          // <— añade esto
+} from '../Practica4/cart_utils.js';
+
+// expón todas las funciones que usas en onclick inline
+Object.assign(window, {
+  enableAmount,
+  confirmAmount,
+  cancelAmount,
+  deleteItem           // <— aquí también
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const cart = getCart();
+  const container = document.querySelector('.col-md-8');
+
+  // Render de tabla
+  const table = document.createElement('table');
+  table.classList.add('table');
+  table.innerHTML = `
+    <thead>
+      <tr>
+        <th>Producto</th><th>Precio</th><th>Cantidad</th>
+        <th>Total</th><th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${shoppingCartToHtml(cart)}
+    </tbody>
+  `;
+  container.innerHTML = '<h4>Productos en tu carrito:</h4>';
+  container.appendChild(table);
+
+  // Render de resumen
+  const resumen = document.querySelector('.card');
+  resumen.innerHTML = priceSummaryToHtml(cart) + `
+    <button class="btn btn-success btn-block mt-3">Proceder al Pago</button>
+    <a href="orders.html" class="btn btn-info btn-block mt-3">Ver Orden</a>
+  `;
+});
+</script>
+
+
+
+
+    
+    
+  </body>
+</html>
